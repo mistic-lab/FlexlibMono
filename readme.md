@@ -1,3 +1,5 @@
+![alt tag](https://travis-ci.org/krippendorf/FlexlibMono.svg?branch=master)
+
 #Mono/Linux compatible version of Flexlib
 A few experiments with Flexlib on mono.
 Currently only short experiments and snippets.
