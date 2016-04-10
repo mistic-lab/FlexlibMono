@@ -1,3 +1,2 @@
 language: csharp
-script:
-  - xbuild /p:Configuration=Debug src/FlexlibMono.sln
+solution: ./src/FlexlibMono.sln
