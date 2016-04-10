@@ -1,0 +1,13 @@
+﻿<Properties StartupItem="HB9FXQ.Queryutil/HB9FXQ.DaxIqCat.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="HB9FXQ.Queryutil/SampleFlexWrapper.cs">
+    <Files>
+      <File FileName="HB9FXQ.Queryutil/SampleFlexWrapper.cs" Line="14" Column="27" />
+      <File FileName="HB9FXQ.Queryutil/Program.cs" Line="11" Column="102" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
