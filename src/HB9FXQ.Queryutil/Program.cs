@@ -31,7 +31,7 @@ namespace HB9FXQ.DaxIqCat
 				Console.WriteLine ("");
 				Console.WriteLine ("usage: HB9FXQ.DaxIqCat");
 				Console.WriteLine("\t[samplerate(int) daxChannel(ushort) udpSocketAdr (string) socketPort (ushort)]");
-				Console.WriteLine("eg. HB9FXQ.DaxIqCat 192000 1 127.0.0.1 5566");
+				Console.WriteLine("eg. HB9FXQ.DaxIqCat 192000 1 \"127.0.0.1\" 5566");
 				Environment.Exit (-1);
 			}
 

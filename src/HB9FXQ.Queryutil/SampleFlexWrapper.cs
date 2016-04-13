@@ -93,6 +93,8 @@ namespace HB9FXQ.DaxIqCat
 
 		byte[] outBuffer = new byte[1024*4];
 
+		bool pkgSeen = false;
+
 		void IQ_DataReady (IQStream iq_stream, float[] data)
 		{			
 			ushort i = 0; 
@@ -105,6 +107,11 @@ namespace HB9FXQ.DaxIqCat
 			}
 
 			sock.SendTo(outBuffer , endPoint);
+
+			if(!pkgSeen){
+				Console.WriteLine ("OK, writing IQ data...");
+				pkgSeen = true;
+			}
 
 	     }
 	}
