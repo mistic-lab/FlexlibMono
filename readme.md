@@ -4,6 +4,14 @@
 A few experiments with Flexlib on mono.
 Currently only short experiments and snippets.
 
+# How to install?
+You'll need a recent version of mono, get it from http://www.mono-project.com/download/ 
+
+Then run: 
+```
+git clone https://github.com/krippendorf/FlexlibMono.git && cd FlexlibMono && ./buildtools.sh
+```
+
 # Lincence
 * For Flexradio assemblies see the Flexlib licence.
 * All code in Namespace HB9FXQ is MIT licenced.
