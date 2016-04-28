@@ -13,7 +13,7 @@ There is sample code from the original flexlib package in the repo that isn't pa
 
 ## List of utils that exist so far: 
 
-### HB9FXQ.Queryutil
+### HB9FXQ.DaxIqCat
 Use this to subscribe to a DAX IQ Channel and push raw data to an UDP socket.... a rename will follow :) 
 The util can be used while SmartSDR running on any other - or - the same machine.
 
@@ -22,7 +22,7 @@ Samples:
 For both samples, start the util in a shell: 
 
 ```
-mono HB9FXQ.Queryutil.exe 192000 1 "127.0.0.1" 5566
+mono HB9FXQ.DaxIqCat.exe 192000 1 "127.0.0.1" 5566
 ```
 
  arguments

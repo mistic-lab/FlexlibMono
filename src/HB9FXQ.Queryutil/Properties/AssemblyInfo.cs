@@ -4,12 +4,12 @@ using System.Runtime.CompilerServices;
 // Information about this assembly is defined by the following attributes.
 // Change them to the values specific to your project.
 
-[assembly: AssemblyTitle ("HB9FXQ.Queryutil")]
+[assembly: AssemblyTitle("HB9FXQ.DaxIqCat")]
 [assembly: AssemblyDescription ("")]
 [assembly: AssemblyConfiguration ("")]
 [assembly: AssemblyCompany ("")]
 [assembly: AssemblyProduct ("")]
-[assembly: AssemblyCopyright ("int_wkf")]
+[assembly: AssemblyCopyright("mail@hb9fxq.ch")]
 [assembly: AssemblyTrademark ("")]
 [assembly: AssemblyCulture ("")]
 

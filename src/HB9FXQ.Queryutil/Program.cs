@@ -15,15 +15,21 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 */
 
-using System;
-using System.Linq;
-using System.Threading;
+
 
 namespace HB9FXQ.DaxIqCat
 {
-	class Program
+    using System;
+    using System.Linq;
+    using System.Threading;
+
+    class Program
 	{
-		public static void Main (string[] args)
+
+	    private const string NullPanaString = "0: 0.000000 USB [0,0]";
+
+
+        public static void Main (string[] args)
 		{
 
 			if (4 != args.Length) {
@@ -35,23 +41,38 @@ namespace HB9FXQ.DaxIqCat
 				Environment.Exit (-1);
 			}
 
-			var wrapper = new SampleFlexWrapper (
+			var wrapper = new DaxIqCat (
 				Convert.ToInt32(args[0]), 
 				Convert.ToUInt16(args[1]), 
 				args[2],
 				Convert.ToUInt16(args[3]));  // connects to the first radio detected !
 
+		    var msg = "-1";
+
 			while (true) {
 
-				if (wrapper.ConnectedRadio.SliceList.Any()) {
+                lock (wrapper.ConnectedRadio.SliceList)
+                {
+                    if (!wrapper.ConnectedRadio.SliceList.Any()) continue;
+                    
+                    var currentInfo = wrapper.ConnectedRadio.SliceList.Aggregate(string.Empty,
+                        (current, slice) => current + slice.ToString());
 
-					Console.WriteLine ("-------------------------------------------------------------");
-					Console.WriteLine (DateTime.UtcNow.ToLongDateString() + " " + DateTime.UtcNow.ToLongTimeString());
-					wrapper.ConnectedRadio.SliceList.ForEach (Console.WriteLine);
-					Console.WriteLine ("-------------------------------------------------------------");
+                    if (currentInfo != msg && !currentInfo.Contains(NullPanaString))
+                    {
+                        Console.WriteLine(Environment.NewLine + "* SLICES LIST       ---------------------");
+                        Console.WriteLine(DateTime.UtcNow.ToLongDateString() + " " +
+                                          DateTime.UtcNow.ToLongTimeString());
+                        Console.WriteLine(currentInfo);
+                        Console.WriteLine("*-----------------------------------------" + Environment.NewLine);
+                        msg = currentInfo;
+                        wrapper.PackageWriteNotifyDone = false;
+                    }
 
-					Thread.Sleep (1000);
-				}
+
+
+                    Thread.Sleep(1000);
+                }
 			}
 		}
 	}
