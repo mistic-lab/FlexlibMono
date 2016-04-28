@@ -50,10 +50,8 @@ namespace HB9FXQ.DaxIqCat
 		    var msg = "-1";
 
 			while (true) {
-
-                lock (wrapper.ConnectedRadio.SliceList)
-                {
-                    if (!wrapper.ConnectedRadio.SliceList.Any()) continue;
+             
+				if (1>wrapper.ConnectedRadio.SliceList.Count()) continue;
                     
                     var currentInfo = wrapper.ConnectedRadio.SliceList.Aggregate(string.Empty,
                         (current, slice) => current + slice.ToString());
@@ -69,10 +67,8 @@ namespace HB9FXQ.DaxIqCat
                         wrapper.PackageWriteNotifyDone = false;
                     }
 
-
-
                     Thread.Sleep(1000);
-                }
+                
 			}
 		}
 	}

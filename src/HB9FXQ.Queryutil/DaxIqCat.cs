@@ -89,7 +89,7 @@ namespace HB9FXQ.DaxIqCat
             firstPan.DAXIQChannel = 0;
 			firstPan.DAXIQChannel = _daxChannel;
 
-			var iq = ConnectedRadio.CreateIQStream (1);
+			var iq = ConnectedRadio.CreateIQStream (_daxChannel);
 
 			iq.DataReady += IQ_DataReady;
 			iq.RequestIQStreamFromRadio ();
