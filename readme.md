@@ -11,6 +11,7 @@ Then run:
 ```
 git clone https://github.com/krippendorf/FlexlibMono.git && cd FlexlibMono && ./buildtools.sh
 ```
+The compiled utils / libs are now in the ./tools folder of your working copy.
 
 # Lincence
 * For Flexradio assemblies see the Flexlib licence.
