@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vita", "Vita\Vita.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HB9FXQ.DaxIqCat", "HB9FXQ.Queryutil\HB9FXQ.DaxIqCat.csproj", "{3739D148-971D-48DC-A18C-77613CC46BC6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexLib.Debugging", "FlexLib.Debugging\FlexLib.Debugging.csproj", "{DEA17795-81FF-4B2F-8D02-C6D50C1848E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -37,5 +39,9 @@ Global
 		{9C0AD871-92FD-461B-84FF-3738D701814F}.Debug|x86.Build.0 = Debug|x86
 		{9C0AD871-92FD-461B-84FF-3738D701814F}.Release|x86.ActiveCfg = Release|x86
 		{9C0AD871-92FD-461B-84FF-3738D701814F}.Release|x86.Build.0 = Release|x86
+		{DEA17795-81FF-4B2F-8D02-C6D50C1848E6}.Debug|x86.ActiveCfg = Debug|x86
+		{DEA17795-81FF-4B2F-8D02-C6D50C1848E6}.Debug|x86.Build.0 = Debug|x86
+		{DEA17795-81FF-4B2F-8D02-C6D50C1848E6}.Release|x86.ActiveCfg = Release|x86
+		{DEA17795-81FF-4B2F-8D02-C6D50C1848E6}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 EndGlobal

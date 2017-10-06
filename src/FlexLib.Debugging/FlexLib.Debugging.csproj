@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{DEA17795-81FF-4B2F-8D02-C6D50C1848E6}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>FlexLib.Debugging</RootNamespace>
+    <AssemblyName>FlexLib.Debugging</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FlexLib\FlexLib.csproj">
+      <Project>{7927817C-D5EF-4A9E-B38E-29668F308343}</Project>
+      <Name>FlexLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UiWpfFramework\UiWpfFramework.csproj">
+      <Project>{9C0AD871-92FD-461B-84FF-3738D701814F}</Project>
+      <Name>UiWpfFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Util\Util.csproj">
+      <Project>{38935DC9-FF48-470C-B876-473A3AE8BD32}</Project>
+      <Name>Util</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vita\Vita.csproj">
+      <Project>{6ED364FB-7444-44DA-9196-1D8679425B3E}</Project>
+      <Name>Vita</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
