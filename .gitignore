@@ -16,3 +16,5 @@ Version.cs
 Version.h
 Version.cpp
 /src/packages/
+*.userprefs
+tools
