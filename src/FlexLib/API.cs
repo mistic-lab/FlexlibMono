@@ -26,6 +26,7 @@ using System.Threading;
 
 using Flex.Smoothlake.Vita;
 using Flex.Util;
+using System.Globalization;
 
 namespace Flex.Smoothlake.FlexLib
 {
@@ -514,5 +515,21 @@ namespace Flex.Smoothlake.FlexLib
 
             }
         }
+
+		public static uint ParseStreamId(string s)
+		{
+			uint streamId;
+
+			try
+			{
+				streamId = uint.Parse(s, NumberStyles.HexNumber, CultureInfo.InvariantCulture);
+			}
+			catch (Exception e)
+			{
+				throw new FormatException("IQStream::UpdateStreamID-Error parsing Stream ID (" + s + ")", e);
+			}
+
+			return streamId;
+		}
     }
 }

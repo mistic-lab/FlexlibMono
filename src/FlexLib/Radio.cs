@@ -30,6 +30,7 @@ using System.Windows;       // for Size
 using Flex.Smoothlake.Vita;
 using Flex.UiWpfFramework.Mvvm;
 using Flex.Util;
+using System.Threading.Tasks;
 
 namespace Flex.Smoothlake.FlexLib
 {
@@ -760,7 +761,7 @@ namespace Flex.Smoothlake.FlexLib
 
                 if (API.IsGUI) SendCommand("client gui");
 
-                // subscribe for status updates
+                // subscribe for status updatesC
                 SendCommand("sub tx all");
                 SendCommand("sub atu all");
                 SendCommand("sub meter all");
@@ -2854,6 +2855,30 @@ namespace Flex.Smoothlake.FlexLib
             return new Panadapter(this, width, height);
         }
 
+        public Task<Panadapter> CreatePanadapterAsync(int width, int height){
+            var tcs = new TaskCompletionSource<Panadapter>();
+
+			// check to make sure the radio is connected
+			if (!Connected)
+			{
+				tcs.SetException(new InvalidOperationException("Radio not connected"));
+			};
+
+			var handler = new ReplyHandler((seq, responseCode, response) =>
+			{
+                var ids = response.Split(new[] { "0x","," },StringSplitOptions.RemoveEmptyEntries);
+                var id = API.ParseStreamId(ids[0]);
+                var adapter = FindPanadapterByStreamID(id);
+				adapter.UpdateStreamID(seq, responseCode, ids[0]);
+				tcs.SetResult(adapter);
+			});
+
+			// send the command to the radio to create the object
+			SendReplyCommand(new ReplyHandler(handler), "display pan create x=" + width + " y=" + height);
+
+			return tcs.Task;
+        }
+
         internal void RemovePanadapter(uint stream_id, bool sendCommands)
         {
             Panadapter pan = FindPanadapterByStreamID(stream_id);
@@ -3531,6 +3556,32 @@ namespace Flex.Smoothlake.FlexLib
         public IQStream CreateIQStream(int daxIQChannel)
         {
             return new IQStream(this, daxIQChannel);
+        }
+
+
+        public Task<IQStream> CreateIQStreamAsync(int daxIQChannel){
+            var tcs = new TaskCompletionSource<IQStream>();
+
+			// check to make sure the radio is connected
+            if (!Connected){
+                tcs.SetException(new InvalidOperationException("Radio not connected"));
+            };
+
+            // Since the status update comes before the response, use the response
+            // here to find the stream ID and then return the subsequent IQStream
+            // that has already been created
+            var handler = new ReplyHandler((seq, responseCode, response) =>
+            {
+                var id = API.ParseStreamId(response);
+                var stream = FindIQStreamByStreamID(id);
+                stream.UpdateStreamID(seq,responseCode,response);
+                tcs.SetResult(stream);
+            });
+
+			// send the command to the radio to create the object
+			SendReplyCommand(handler, "stream create daxiq=" + daxIQChannel);
+
+            return tcs.Task;
         }
 
         /// <summary>

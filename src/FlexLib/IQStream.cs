@@ -203,7 +203,7 @@ namespace Flex.Smoothlake.FlexLib
             return true;
         }
 
-        private void UpdateStreamID(int seq, uint resp_val, string s)
+        internal void UpdateStreamID(int seq, uint resp_val, string s)
         {
             if (resp_val != 0) return;
 
@@ -329,13 +329,14 @@ namespace Flex.Smoothlake.FlexLib
             }
         }
         
-        public void StatusUpdate(string s)
+        public void StatusUpdate(string updateString)
         {
-            // ignore messages for other clients
-            if (!_mine) return;
+            // Return if we don't have an id yet, as that is how
+            // status updates are passed along to us
+            if (_streamId==0 || !_mine) return;
 
             bool set_radio_ack = false;
-            string[] words = s.Split(' ');
+            string[] words = updateString.Split(' ');
 
             foreach (string kv in words)
             {

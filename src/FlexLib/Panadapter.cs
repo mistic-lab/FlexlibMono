@@ -76,7 +76,7 @@ namespace Flex.Smoothlake.FlexLib
             return true;
         }
 
-        private void UpdateStreamID(int seq, uint resp_val, string s)
+        internal void UpdateStreamID(int seq, uint resp_val, string s)
         {
             if (resp_val != 0) return;
 
