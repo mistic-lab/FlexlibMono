@@ -16,24 +16,24 @@ namespace FlexLib.Debugging
             API.RadioAdded += async (radio) =>
             {
                 radio.Connect();
-                var panAdapters = await WaitForPanadaptersAsync(radio);
-                var panAdapter = panAdapters.FirstOrDefault();
-                if (panAdapter == null)
-                {
-                    panAdapter = await radio.CreatePanadapterAsync(0, 0);
+                var panAdapter = radio.GetOrCreatePanadapterSync(0, 0);
+     //           var panAdapters = await WaitForPanadaptersAsync(radio);
+     //           var panAdapter = panAdapters.FirstOrDefault();
+     //           if (panAdapter == null)
+     //           {
+     //               panAdapter = await radio.CreatePanadapterAsync(0, 0);
 
-					// Remove the slices for our new pan adapter
-					radio.SliceList
-						 .Where(s => s.Panadapter == panAdapter)
-						 .ToList()
-						 .ForEach(s => s.Remove(true));
-                }
-
-
+					//// Remove the slices for our new pan adapter
+	
+                //}
 
                 panAdapter.DAXIQChannel = 1;
+				radio.SliceList
+    				//.Where(s => s.Panadapter == panAdapter)
+    				.ToList()
+    				.ForEach(s => s.Remove(true));
 
-                var iq = radio.FindIQStreamByDAXIQChannel(1);
+				var iq = radio.FindIQStreamByDAXIQChannel(1);
                 if (iq == null)
                 {
                     iq = await radio.CreateIQStreamAsync(1);

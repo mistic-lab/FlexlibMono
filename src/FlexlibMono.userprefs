@@ -1,10 +1,10 @@
 ﻿<Properties StartupConfiguration="{DEA17795-81FF-4B2F-8D02-C6D50C1848E6}|Default">
   <MonoDevelop.Ide.ItemProperties.HB9FXQ.DaxIqCat PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FlexLib/API.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FlexLib.Debugging/Program.cs">
     <Files>
-      <File FileName="FlexLib.Debugging/Program.cs" Line="23" Column="63" />
+      <File FileName="FlexLib.Debugging/Program.cs" Line="27" Column="1" />
       <File FileName="FlexLib/API.cs" Line="525" Column="37" />
-      <File FileName="FlexLib/Radio.cs" Line="3576" Column="14" />
+      <File FileName="FlexLib/Radio.cs" Line="1565" Column="1" />
       <File FileName="FlexLib/IQStream.cs" Line="206" Column="9" />
       <File FileName="FlexLib/Panadapter.cs" Line="83" Column="104" />
     </Files>
@@ -23,8 +23,8 @@
       <Breakpoint file="/home/cjam/Documents/FlexlibMono/src/FlexLib/Radio.cs" relfile="FlexLib/Radio.cs" line="3577" column="1" />
       <Breakpoint file="/home/cjam/Documents/FlexlibMono/src/FlexLib.Debugging/Program.cs" relfile="FlexLib.Debugging/Program.cs" line="33" column="1" />
       <Breakpoint file="/home/cjam/Documents/FlexlibMono/src/FlexLib.Debugging/Program.cs" relfile="FlexLib.Debugging/Program.cs" line="27" column="1" />
-      <Breakpoint file="/home/cjam/Documents/FlexlibMono/src/FlexLib.Debugging/Program.cs" relfile="FlexLib.Debugging/Program.cs" line="64" column="1" />
-      <Breakpoint file="/home/cjam/Documents/FlexlibMono/src/FlexLib/Radio.cs" relfile="FlexLib/Radio.cs" line="1565" column="1" />
+      <Breakpoint file="/home/cjam/Documents/FlexlibMono/src/FlexLib.Debugging/Program.cs" relfile="FlexLib.Debugging/Program.cs" line="23" column="63" />
+      <Breakpoint file="/home/cjam/Documents/FlexlibMono/src/FlexLib.Debugging/Program.cs" relfile="FlexLib.Debugging/Program.cs" line="21" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
