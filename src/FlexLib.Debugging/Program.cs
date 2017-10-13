@@ -16,20 +16,19 @@ namespace FlexLib.Debugging
             API.RadioAdded += async (radio) =>
             {
                 radio.Connect();
+                var adapters = await radio.WaitForPanadaptersAsync();
+                adapters.ForEach(p=>p.Close(true));
                 var panAdapter = radio.GetOrCreatePanadapterSync(0, 0);
-     //           var panAdapters = await WaitForPanadaptersAsync(radio);
-     //           var panAdapter = panAdapters.FirstOrDefault();
-     //           if (panAdapter == null)
-     //           {
-     //               panAdapter = await radio.CreatePanadapterAsync(0, 0);
-
-					//// Remove the slices for our new pan adapter
-	
+                //var panAdapters = await WaitForPanadaptersAsync(radio);
+                //var panAdapter = panAdapters.FirstOrDefault();
+                //if (panAdapter == null)
+                //{
+                //    panAdapter = await radio.CreatePanadapterAsync(0, 0);                	
                 //}
 
                 panAdapter.DAXIQChannel = 1;
 				radio.SliceList
-    				//.Where(s => s.Panadapter == panAdapter)
+    				.Where(s => s.Panadapter == panAdapter)
     				.ToList()
     				.ForEach(s => s.Remove(true));
 
@@ -45,6 +44,7 @@ namespace FlexLib.Debugging
 
             };
             API.Init();
+            API.CloseSession();
             Console.WriteLine("Press any key to exit...");
             Console.ReadLine();
         }

@@ -25,13 +25,13 @@ using System.Net;
 using System.Net.Sockets;
 using System.Net.NetworkInformation;
 using System.Text;
-using System.Threading;     // for AutoResetEvent
 using System.Windows;       // for Size
 using Flex.Smoothlake.Vita;
 using Flex.UiWpfFramework.Mvvm;
 using Flex.Util;
-using System.Threading.Tasks;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Flex.Smoothlake.FlexLib
 {
@@ -2854,6 +2854,29 @@ namespace Flex.Smoothlake.FlexLib
         public Panadapter CreatePanadapter(int width, int height)
         {
             return new Panadapter(this, width, height);
+        }
+
+		public async Task<List<Panadapter>> WaitForPanadaptersAsync(int waitMs = 2000)
+		{
+			CancellationTokenSource cts = new CancellationTokenSource(waitMs);
+			var token = cts.Token;
+			return await Task.Run(() =>
+			{
+				// Wait for panadapters
+				while (PanadapterList.Count == 0)
+				{
+					if (token.IsCancellationRequested)
+					{
+						return new List<Panadapter>();
+					}
+				}
+				// Return the first panAdapter
+				return PanadapterList.ToList();
+			}, token);
+		}
+
+        public List<Panadapter> WaitForPanadaptersSync(int waitMs = 2000){
+            return WaitForPanadaptersAsync(waitMs).Result;
         }
 
         public Task<Panadapter> CreatePanadapterAsync(int width, int height)
