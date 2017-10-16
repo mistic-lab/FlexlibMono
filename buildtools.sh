@@ -10,11 +10,7 @@ fi
 
 mkdir $ToolDir
 
-
 msbuild /p:Configuration=Release /t:Clean $SourceDir/FlexlibMono.sln
 msbuild /p:Configuration=Release /t:Build $SourceDir/FlexlibMono.sln
 cp $OutputDir/*.dll $ToolDir
 cp $OutputDir/*.exe $ToolDir
-
-GrFlexLibDir="$ScriptDir/../gr-flex/python/FlexlibMono"
-cp $OutputDir/*.dll $GrFlexLibDir
