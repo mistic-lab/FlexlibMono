@@ -44,9 +44,9 @@ namespace FlexLib.Debugging
 
             };
             API.Init();
-            API.CloseSession();
             Console.WriteLine("Press any key to exit...");
             Console.ReadLine();
+			API.CloseSession();
         }
 
         private static async Task<List<Panadapter>> WaitForPanadaptersAsync(Radio radio, int waitMs = 2000)
