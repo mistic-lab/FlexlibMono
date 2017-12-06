@@ -17,6 +17,7 @@ namespace FlexLib.Debugging
             {
                 radio.Connect();
                 var adapters = await radio.WaitForPanadaptersAsync();
+                Console.WriteLine(string.Format("{0} of adapters",adapters.Count()));
                 adapters.ForEach(p=>p.Close(true));
                 var panAdapter = radio.GetOrCreatePanadapterSync(0, 0);
                 //var panAdapters = await WaitForPanadaptersAsync(radio);
@@ -43,6 +44,7 @@ namespace FlexLib.Debugging
 
 
             };
+
             API.Init();
             Console.WriteLine("Press any key to exit...");
             Console.ReadLine();

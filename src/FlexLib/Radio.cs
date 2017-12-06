@@ -2856,10 +2856,11 @@ namespace Flex.Smoothlake.FlexLib
             return new Panadapter(this, width, height);
         }
 
-		public async Task<List<Panadapter>> WaitForPanadaptersAsync(int waitMs = 2000)
+        public async Task<List<Panadapter>> WaitForPanadaptersAsync(int timeoutMs = 2000,int delay = 500)
 		{
-			CancellationTokenSource cts = new CancellationTokenSource(waitMs);
-			var token = cts.Token;
+			CancellationTokenSource cts = new CancellationTokenSource(timeoutMs);
+            await Task.Delay(delay);
+            var token = cts.Token;
 			return await Task.Run(() =>
 			{
 				// Wait for panadapters
@@ -2875,8 +2876,8 @@ namespace Flex.Smoothlake.FlexLib
 			}, token);
 		}
 
-        public List<Panadapter> WaitForPanadaptersSync(int waitMs = 2000){
-            return WaitForPanadaptersAsync(waitMs).Result;
+        public List<Panadapter> WaitForPanadaptersSync(int timeoutMs = 2000,int delay = 500){
+            return WaitForPanadaptersAsync(delay,timeoutMs).Result;
         }
 
         public Task<Panadapter> CreatePanadapterAsync(int width, int height)
